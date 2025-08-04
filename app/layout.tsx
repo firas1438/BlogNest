@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/toaster";
 
 
 const geist = Poppins({
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <SiteHeader />
             {children}
+            <Toaster />
           <SiteFooter />
         </ThemeProvider>
       </body>

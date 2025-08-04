@@ -4,6 +4,7 @@ import { Logo } from "./logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { GithubIcon, LogInIcon } from "lucide-react";
 import { HeaderSearch } from "@/components/search";
+import { LoginDialog } from "./login-dialog";
 
 export function SiteHeader() {
   return (
@@ -34,20 +35,20 @@ export function SiteHeader() {
           {/* Searchbox */}
           <HeaderSearch />
           <nav className="flex items-center">
-            {/* Github icon */}
-            <Button variant="ghost" size="icon" asChild>
+            
+            {/* Github */}
+            {/* <Button variant="ghost" size="icon" asChild>
               <Link href="https://github.com/shadcn-examples" target="_blank">
                 <GithubIcon />
               </Link>
-            </Button>
-            {/* Theme switcher icon */}
+            </Button> */}
+
+            {/* Theme Switcher */}
             <ThemeToggle />
-            {/* Login icon */}
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="/login" className="text-foreground">
-                <LogInIcon/>
-              </Link>
-            </Button>
+
+            {/* Login */}
+            <LoginDialog/>
+
           </nav>
         </div>
       </div>
