@@ -1,10 +1,10 @@
 import Categories from "@/components/categories";
 import Spline3D from "./spline";
-import { Input } from "./ui/input";
+
 
 export default function HeroPage() {
   return (
-    <div className="container mx-auto space-y-10 px-4 py-14">
+    <div className="container mx-auto space-y-10 px-4 pt-18 pb-8">
       <header className="mx-auto max-w-3xl space-y-4 text-center">
         <h1 className="text-3xl font-semibold lg:text-5xl lg:leading-14">
           Welcome to BlogNest
@@ -20,8 +20,6 @@ export default function HeroPage() {
             <Spline3D />
           </div>
       </div>
-
-      <Categories />
 
     </div>
   );

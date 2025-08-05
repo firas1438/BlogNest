@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Eye, Clock } from "lucide-react";
+
 
 interface BlogPostCardProps {
   imageSrc: string;
@@ -11,6 +13,7 @@ interface BlogPostCardProps {
   authorAvatarSrc: string;
   readTime: string;
   tags: string[];
+  views: number;
 }
 
 export function BlogPostCard({
@@ -21,7 +24,8 @@ export function BlogPostCard({
   authorName,
   authorAvatarSrc,
   readTime,
-  tags
+  tags,
+  views
 }: BlogPostCardProps) {
   return (
     <div className="bg-card text-card-foreground overflow-hidden rounded-lg border">
@@ -37,7 +41,7 @@ export function BlogPostCard({
             {tags.map((tag, idx) => (
               <Badge
                 key={idx}
-                className="bg-neutral-300/50 backdrop-blur-sm"
+                className="bg-neutral-300/70 backdrop-blur-sm "
               >
                 {tag}
               </Badge>
@@ -46,7 +50,7 @@ export function BlogPostCard({
         )}
       </div>
 
-      <div className="grid gap-2 p-4">
+      <div className="grid gap-3 p-4 ">
         <h3 className="text-lg leading-tight font-semibold">{title}</h3>
         <p className="text-muted-foreground line-clamp-3 text-sm">{description}</p>
 
@@ -55,15 +59,16 @@ export function BlogPostCard({
           <Avatar className="h-6 w-6">
             <AvatarImage src={authorAvatarSrc || "/placeholder.svg"} />
             <AvatarFallback>
-              {authorName
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+              {authorName.split(" ").map((n) => n[0]).join("")}
             </AvatarFallback>
           </Avatar>
           <span>{authorName}</span>
           <span>•</span>
           <span>{readTime} read</span>
+          <span>•</span>
+          <span className="flex items-center gap-1.5"> {views} <Eye className="h-4 w-4" /> </span>
+
+
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
+import { Providers } from "./providers";
 
 
 const geist = Poppins({
@@ -27,12 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning className={`${geist.className} `}>
-        <ThemeProvider attribute="class">
-          <SiteHeader />
-            {children}
-            <Toaster />
-          <SiteFooter />
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider attribute="class">
+            <SiteHeader />
+              {children}
+              <Toaster />
+            <SiteFooter />
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

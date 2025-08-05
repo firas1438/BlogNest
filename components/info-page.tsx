@@ -6,16 +6,21 @@ import { Button } from "@/components/ui/button";
 import { BlogPostCard } from "@/components/blog-post-card";
 import { FeaturedPostSidebarItem } from "@/components/featured-post-sidebar-item";
 
+import Categories from "./categories";
+
 export default function InfoPage() {
   return (
-    <div className="container mx-auto px-4  pb-8 md:px-6 lg:px-8">
+    <div className="container mx-auto px-4 py-12 md:px-8 lg:px-24">
+
+      {/* Categories Section */}
+      <div className="mb-12">
+        <Categories />
+      </div>
+
+      {/* Most Viewed Blogs Section */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="relative h-[400px] overflow-hidden rounded-lg shadow-lg md:h-[500px] lg:col-span-2">
-          <img
-            src="https://placehold.co/600x400?text=."
-            alt="Unlocking Business Efficiency with SaaS Solutions"
-            className="w-full object-cover"
-          />
+          <img src="https://placehold.co/600x400?text=." alt="Unlocking Business Efficiency with SaaS Solutions" className="w-full object-cover"/>
           <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 to-transparent p-6 text-white">
             <Badge className="mb-2 w-fit bg-white/20 text-white backdrop-blur-sm">Business</Badge>
             <h2 className="text-2xl leading-tight font-bold md:text-3xl">
@@ -62,7 +67,7 @@ export default function InfoPage() {
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold">Recent Posts</h2>
           <Button variant="outline" asChild>
-            <Link href="#">All Posts</Link>
+            <Link href="/blogs">All Posts</Link>
           </Button>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -75,6 +80,7 @@ export default function InfoPage() {
             authorAvatarSrc="/placeholder.svg?height=24&width=24"
             readTime="3 min"
             tags={["Generative AI","Computer Vision","AI"]}
+            views={0}
           />
           <BlogPostCard
             imageSrc="https://placehold.co/600x400?text=."
@@ -85,6 +91,7 @@ export default function InfoPage() {
             authorAvatarSrc="/placeholder.svg?height=24&width=24"
             readTime="5 min"
             tags={["React","Next.js"]}
+            views={0}
           />
           <BlogPostCard
             imageSrc="https://placehold.co/600x400?text=."
@@ -95,9 +102,11 @@ export default function InfoPage() {
             authorAvatarSrc="/placeholder.svg?height=24&width=24"
             readTime="2 min"
             tags={["React","Next.js"]}
+            views={0}
           />
         </div>
       </div>
+
     </div>
   );
 }

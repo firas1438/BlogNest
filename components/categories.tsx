@@ -12,7 +12,7 @@ const data = [
 
 export default function Categories() {
   return (
-    <div className="container mx-auto px-4 space-y-5 pt-12">
+    <div className="container mx-auto  space-y-4 pt-12">
       <div>
         <h2 className="text-2xl font-bold">Looking for a specific category?</h2>
       </div>
