@@ -5,6 +5,14 @@ import { useParams } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/seperator';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import { mdxComponents } from "@/components/ui/typography"
+import { Clock, Eye, AlertTriangle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
 
 interface Blog {
   _id: string;
@@ -12,6 +20,7 @@ interface Blog {
   imageAlt: string;
   title: string;
   description: string;
+  content: any;
   authorName: string;
   authorAvatarSrc?: string;
   readTime: string;
@@ -53,7 +62,22 @@ export default function BlogDetailPage() {
 
   {/* error message */}
   if (isError || !blog) {
-    return <p className="text-center text-red-500">Blog not found.</p>;
+    return (
+      <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold flex items-center justify-center gap-2 text-destructive mb-4">
+            Blog Not Found
+            <AlertTriangle className="h-6 w-6" />
+          </h2>
+          <p className="text-md text-foreground mb-6">
+            Sorry, we couldn&apos;t find the blog you&apos;re looking for.
+          </p>
+          <Button asChild variant="outline">
+            <Link href="/blogs">Back to Blogs</Link>
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -62,15 +86,13 @@ export default function BlogDetailPage() {
 
         {/* left column - blog content */}
         <div className="lg:col-span-2">
-          <img
-            src={blog.imageSrc}
-            alt={blog.imageAlt}
-            className="w-full h-auto max-h-[400px] object-cover rounded-2xl mb-8"
-          />
+          <img src={blog.imageSrc} alt="Blog Image" className="w-full h-auto max-h-[400px] object-cover rounded-2xl mb-8"/>
           <h1 className="text-2xl font-bold mb-4">{blog.title}</h1>
           <Separator/>
           <div className="prose max-w-none mt-6">
-            <p className="text-lg leading-relaxed whitespace-pre-line">{blog.description}</p>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={mdxComponents}>
+              {blog.content}
+            </ReactMarkdown>
           </div>
         </div>
 

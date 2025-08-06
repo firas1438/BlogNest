@@ -63,11 +63,10 @@ export function BlogPostCard({
             </AvatarFallback>
           </Avatar>
           <span>{authorName}</span>
-          <span>•</span>
+          <span>✦</span>
           <span>{readTime} read</span>
-          <span>•</span>
-          <span className="flex items-center gap-1.5"> {views} <Eye className="h-4 w-4" /> </span>
-
+          <span>✦</span>
+          <span className="flex items-center gap-1.5"> {views} views </span>
 
         </div>
       </div>

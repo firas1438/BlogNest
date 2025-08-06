@@ -14,17 +14,18 @@ export async function GET() {
   }
 }
 
-
-
 // POST new blog
 export async function POST(req: Request) {
   try {
     await connectDB();
     const body = await req.json();
-    const blog = await Blog.create(body);
+
+    const blog = await Blog.create({
+      ...body,
+    });
+
     return NextResponse.json({ blog }, { status: 201 });
   } catch (err) {
-    return NextResponse.json({ error: "Failed to create event" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to create blog" }, { status: 500 });
   }
 }
-

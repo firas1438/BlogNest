@@ -13,23 +13,22 @@ import { useState, useEffect } from 'react';
 interface Blog {
   _id: string;
   imageSrc: string;
-  imageAlt: string;
   title: string;
   description: string;
   authorName: string;
-  authorAvatarSrc?: string;
   readTime: string;
   tags: string[];
   views: number;
-  createdAt: Date;
 }
 
+// get blogs
 const fetchBlogs = async (): Promise<Blog[]> => {
   const res = await fetch('/api/blogs');
   if (!res.ok) throw new Error('Failed to fetch blogs');
   return res.json();
 };
 
+// skeleton
 function BlogCardSkeleton() {
   return (
     <div className="bg-card text-card-foreground overflow-hidden rounded-lg border">
@@ -55,14 +54,11 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
   const allTags = Array.from(new Set(blogs?.flatMap(blog => blog.tags) || []));
-  const filteredBlogs = blogs?.filter(blog => {
-    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || blog.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTags = selectedTags.length === 0 || selectedTags.some(tag => blog.tags.includes(tag));
-    return matchesSearch && matchesTags;
-  }) || [];
+  const filteredBlogs = blogs?.filter(blog => { const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || blog.description.toLowerCase().includes(searchTerm.toLowerCase()); const matchesTags = selectedTags.length === 0 || selectedTags.some(tag => blog.tags.includes(tag)); return matchesSearch && matchesTags; }) || [];
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
   const currentBlogs = filteredBlogs.slice((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage);
 
+  // pagination
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedTags]);
@@ -87,7 +83,6 @@ export default function BlogPage() {
             )}
           </div>
         </div>
-
         {/* tags */}
         <div className="mb-6">
           <div className="flex flex-wrap gap-2">
@@ -125,12 +120,12 @@ export default function BlogPage() {
           </Button>
         </div>
       ) : (
-        // all blogs
         <>
+          {/* blog list */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {currentBlogs.map(blog => (
               <Link key={blog._id} href={`/blogs/${blog._id}`}>
-                <BlogPostCard imageSrc={blog.imageSrc} imageAlt={blog.imageAlt} title={blog.title} description={blog.description} authorName={blog.authorName} authorAvatarSrc={blog.authorAvatarSrc || '/placeholder.svg'} readTime={blog.readTime} tags={blog.tags} views={blog.views} />
+                <BlogPostCard imageSrc={blog.imageSrc} imageAlt="Blog Banner" title={blog.title} description={blog.description} authorName={blog.authorName} authorAvatarSrc='/placeholder.svg' readTime={blog.readTime} tags={blog.tags} views={blog.views} />
               </Link>
             ))}
           </div>
@@ -144,7 +139,6 @@ export default function BlogPage() {
               <Button variant="outline" size="sm" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages}>Next</Button>
             </div>
           )}
-
         </>
       )}
     </div>
