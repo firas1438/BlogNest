@@ -30,19 +30,14 @@ export function BlogPostCard({
   return (
     <div className="bg-card text-card-foreground overflow-hidden rounded-lg border">
       <div className="relative h-48 w-full">
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          className="h-full w-full object-cover"
-        />
-        {/* Tags Overlay */}
+        <img src={imageSrc} alt={imageAlt} className="h-full w-full object-cover" />
+        {/* Gradient overlay for smoky effect */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/70 to-transparent" />
+        {/* Tags overlay */}
         {tags?.length > 0 && (
           <div className="absolute bottom-0 left-0 flex flex-wrap gap-2 p-3">
             {tags.map((tag, idx) => (
-              <Badge
-                key={idx}
-                className="bg-neutral-300/70 backdrop-blur-sm "
-              >
+              <Badge key={idx} className="bg-muted/80 text-foreground backdrop-blur-sm">
                 {tag}
               </Badge>
             ))}
@@ -63,10 +58,10 @@ export function BlogPostCard({
             </AvatarFallback>
           </Avatar>
           <span>{authorName}</span>
-          <span>✦</span>
+          <span>❖</span>
           <span>{readTime} read</span>
-          <span>✦</span>
-          <span className="flex items-center gap-1.5"> {views} views </span>
+          <span>❖</span>
+          <span className="flex items-center gap-1.5"> {views} views </span> 
 
         </div>
       </div>

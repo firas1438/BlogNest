@@ -1,133 +1,101 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
-import { BlogDocument } from '@/models/blog'
+import { BarChart2, Users, FileText, Clock } from 'lucide-react'
 
-export default function DashboardPage() {
-  const router = useRouter()
-
-  const [form, setForm] = useState<Partial<BlogDocument>>({
-    title: '',
-    description: '',
-    imageSrc: '',
-    authorName: '',
-    readTime: '',
-    tags: [],
-    content: '',
-  })
-
-  const [tagInput, setTagInput] = useState('')
-
-  const handleChange = (field: keyof BlogDocument, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }))
-  }
-
-  const handleTagAdd = () => {
-    if (!tagInput.trim()) return
-    setForm((prev) => ({
-      ...prev,
-      tags: [...(prev.tags || []), tagInput.trim()],
-    }))
-    setTagInput('')
-  }
-
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file || file.type !== 'text/markdown') return
-
-    const text = await file.text()
-    setForm((prev) => ({ ...prev, content: text }))
-  }
-
-  const handleSubmit = async () => {
-    try {
-      const res = await fetch('/api/blogs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-
-      if (res.ok) {
-        router.refresh()
-        router.push('/blogs')
-      } else {
-        console.error('Failed to post blog')
-      }
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
+export default function Dashboard() {
   return (
-    <div className="container mx-auto px-4 py-12 md:px-6 lg:px-24 min-h-screen">
-      <h1 className="text-2xl font-bold mb-6">Create a New Blog</h1>
+    <div className="container mx-auto px-4 py-8 md:px-6 lg:px-18 min-h-screen flex flex-col gap-8">
+      <h1 className="text-3xl font-bold">Welcome back to your Dashboard!</h1>
 
-      <div className="grid gap-6">
-        {/* Blog Info Inputs */}
-        <div className="grid gap-4">
-          <Label>Title</Label>
-          <Input value={form.title} onChange={(e) => handleChange('title', e.target.value)} />
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card>
+          <CardHeader className="flex items-center justify-between">
+            <CardTitle>Total Blogs</CardTitle>
+            <FileText className="text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="text-2xl font-semibold">48</CardContent>
+        </Card>
 
-          <Label>Description</Label>
-          <Textarea value={form.description} onChange={(e) => handleChange('description', e.target.value)} />
+        <Card>
+          <CardHeader className="flex items-center justify-between">
+            <CardTitle>Total Views</CardTitle>
+            <BarChart2 className="text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="text-2xl font-semibold">12,340</CardContent>
+        </Card>
 
-          <Label>Image URL</Label>
-          <Input value={form.imageSrc} onChange={(e) => handleChange('imageSrc', e.target.value)} />
+        <Card>
+          <CardHeader className="flex items-center justify-between">
+            <CardTitle>Subscribers</CardTitle>
+            <Users className="text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="text-2xl font-semibold">1,024</CardContent>
+        </Card>
 
-          <Label>Author Name</Label>
-          <Input value={form.authorName} onChange={(e) => handleChange('authorName', e.target.value)} />
+        <Card>
+          <CardHeader className="flex items-center justify-between">
+            <CardTitle>Avg. Read Time</CardTitle>
+            <Clock className="text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="text-2xl font-semibold">4m 32s</CardContent>
+        </Card>
+      </div>
 
-          <Label>Read Time (e.g., 5 min read)</Label>
-          <Input value={form.readTime} onChange={(e) => handleChange('readTime', e.target.value)} />
-        </div>
-
-        {/* Tags */}
-        <div className="grid gap-2">
-          <Label>Tags</Label>
-          <div className="flex gap-2">
-            <Input
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleTagAdd()}
-            />
-            <Button type="button" onClick={handleTagAdd}>
-              Add Tag
-            </Button>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {(form.tags || []).map((tag, idx) => (
-              <span
-                key={idx}
-                className="px-3 py-1 text-sm bg-muted rounded-full"
-              >
-                {tag}
-              </span>
+      {/* Recent Blog Activity */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="lg:col-span-2">
+          <CardHeader>
+            <CardTitle>Recent Blogs</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[
+              {
+                title: 'Mastering CI/CD Pipelines',
+                views: 1200,
+                readTime: '5 min',
+              },
+              {
+                title: 'Building a Markdown Blog with Next.js',
+                views: 980,
+                readTime: '6 min',
+              },
+              {
+                title: '10 Tips for Clean Code in TypeScript',
+                views: 720,
+                readTime: '4 min',
+              },
+            ].map((post, i) => (
+              <div key={i} className="flex items-start justify-between">
+                <div>
+                  <p className="font-medium text-base">{post.title}</p>
+                  <p className="text-muted-foreground text-sm">
+                    {post.readTime} • {post.views.toLocaleString()} views
+                  </p>
+                </div>
+                <Button variant="outline" size="sm">
+                  View
+                </Button>
+              </div>
             ))}
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
-        {/* Markdown Content */}
-        <div className="grid gap-2">
-          <Label>Blog Content (Markdown)</Label>
-          <Textarea
-            rows={16}
-            className="font-mono text-sm"
-            value={form.content as string}
-            onChange={(e) => handleChange('content', e.target.value)}
-          />
-          <Input type="file" accept=".md" onChange={handleFileUpload} />
-        </div>
-
-        {/* Submit Button */}
-        <Button className="mt-6 w-fit" onClick={handleSubmit}>
-          Post Blog
-        </Button>
+        {/* Engagement */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Engagement</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm mb-2">This Month</p>
+            <Progress value={76} className="h-3" />
+            <p className="text-muted-foreground text-sm mt-2">76% of traffic goal reached</p>
+          </CardContent>
+        </Card>
       </div>
     </div>
-  )
+  );
 }

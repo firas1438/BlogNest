@@ -2,11 +2,17 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Blog from "@/models/blog";
 
-// GET blogs
-export async function GET() {
+// GET blogs with optional limit
+export async function GET(req: Request) {
   try {
-    await connectDB(); 
-    const blogs = await Blog.find().sort({ createdAt: -1 }); // fetch blogs, newest first
+    const { searchParams } = new URL(req.url);
+    // default to 0 (no limit)
+    const limit = parseInt(searchParams.get("limit") || "0") || 0; 
+
+    await connectDB();
+    // newest first + u can apply limit
+    const blogs = await Blog.find().sort({ createdAt: -1 }).limit(limit > 0 ? limit : 0);
+
     return NextResponse.json(blogs);
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -19,10 +25,7 @@ export async function POST(req: Request) {
   try {
     await connectDB();
     const body = await req.json();
-
-    const blog = await Blog.create({
-      ...body,
-    });
+    const blog = await Blog.create({...body,});
 
     return NextResponse.json({ blog }, { status: 201 });
   } catch (err) {

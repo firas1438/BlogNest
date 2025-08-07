@@ -67,7 +67,7 @@ export default function BlogPage() {
   const clearFilters = () => { setSearchTerm(''); setSelectedTags([]); };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:px-6 lg:px-24 min-h-screen">
+    <div className="container mx-auto px-4 py-10 md:px-6 lg:px-24 min-h-screen">
       <div className="mb-8">
 
         {/* searchbox */}

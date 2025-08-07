@@ -2,7 +2,7 @@ import { Logo } from "./logo";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t lg:px-14 md:px-12">
+    <footer className="border-t lg:px-20 md:px-12">
       <div className="px-4 py-6 md:py-8">
         <div className="flex items-center justify-between gap-8">
           <div className="flex flex-col gap-4 md:max-w-96">

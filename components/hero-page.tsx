@@ -1,6 +1,4 @@
-import Categories from "@/components/categories";
 import Spline3D from "./spline";
-
 
 export default function HeroPage() {
   return (
@@ -13,7 +11,6 @@ export default function HeroPage() {
           Discover thoughtful articles, tutorials, and insights on web development, design, AI, DevOps, and more — all in one blog nest.
         </p>
       </header>
-
       {/* 3d model */}
       <div className="flex items-center justify-center w-full overflow-hidden relative lg:h-[340px] md:h-[280px] sm:h-[250px] h-[200px] ">
           <div className="scale-50 sm:scale-75 md:scale-80 lg:scale-100 xl:scale-100 origin-center  transition-transform duration-400 ease-in-out">

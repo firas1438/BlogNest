@@ -7,7 +7,7 @@ import { LoginDialog } from "./login-dialog";
 
 export function SiteHeader() {
   return (
-    <header className="bg-background/95 border-border/70 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur lg:px-14 md:px-12">
+    <header className="bg-background/95 border-border/70 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur lg:px-20 md:px-12">
       <div className="grid h-16 grid-cols-3 items-center justify-between px-4">
         <div className=" flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">

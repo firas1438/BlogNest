@@ -9,7 +9,7 @@ import {
   TypographyList,
   TypographyTable,
 } from "@/components/ui/typography-elements"
-import { Separator } from "./seperator"
+import { Separator } from "./separator"
 import { cn } from "@/lib/utils"
 
 export const mdxComponents = {
