@@ -33,7 +33,7 @@ export function TypographyH3({ children, className = "", ...props }: React.HTMLA
 
 export function TypographyH4({ children, className = "", ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h4 className={`scroll-m-20 text-xl mt-6 font-semibold tracking-tight ${className}`} {...props}>
+    <h4 className={`scroll-m-20 text-xl mt-5 mb-2 font-semibold tracking-tight ${className}`} {...props}>
       {children}
     </h4>
   );
@@ -75,7 +75,7 @@ export function TypographyList({ children, className = "", ...props }: React.HTM
 
 export function TypographyTable({ children, className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={`mt-2 w-full overflow-x-auto ${className}`} {...props}>
+    <div className={`mt-4 w-full overflow-x-auto ${className}`} {...props}>
       <table className="w-full text-left border-separate border-spacing-y-2">
         {children}
       </table>

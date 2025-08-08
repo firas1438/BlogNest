@@ -129,7 +129,7 @@ export default function BlogDetailPage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Read time</span>
-                <span>{blog.readTime}</span>
+                <span>{blog.readTime} min read</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Views</span>
