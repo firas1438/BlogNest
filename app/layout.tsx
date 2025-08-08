@@ -14,9 +14,9 @@ const geist = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Shadcnexamples: Shadcn UI Examples, Components and Blocks",
+  title: "BlogNest",
   description:
-    "Shadcn UI examples, components, and blocks built with Tailwind CSS. For React and Vue.js. Open source. TypeScript compatible."
+    "A platform for writing, publishing, and reading blog posts and articles across a variety of topics."
 };
 
 
