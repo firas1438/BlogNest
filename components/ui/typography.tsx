@@ -49,7 +49,7 @@ export const mdxComponents = {
     className,
     ...props
   }: React.HTMLAttributes<HTMLElement>) => (
-    // @ts-expect-error
+    // @ts-expect-error: TypographyInlineCode expects specific props not compatible with MDX
     <TypographyInlineCode {...props} className={cn(className)} />
   ),
 
