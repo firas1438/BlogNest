@@ -1,15 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { CircleDotDashedIcon, SearchIcon } from "lucide-react";
-import { CommandDialog, CommandEmpty, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
+import { SearchIcon } from "lucide-react";
+import { CommandDialog, CommandEmpty, CommandInput, CommandList} from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export function HeaderSearch() {
   const [open, setOpen] = React.useState(false);
-  const router = useRouter();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {

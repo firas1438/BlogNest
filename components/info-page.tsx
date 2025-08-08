@@ -1,9 +1,7 @@
-import { Badge } from "@/components/ui/badge";
-import { FeaturedPostSidebarItem } from "@/components/featured-post-sidebar-item";
+
 import RecentPostsPage from "./recentposts-section";
 import Categories from "./categories";
 import CTABanner from "./cta-section";
-import Blog from "@/models/blog";
 import FeaturedPage from "./featuredposts-section";
 
 interface Blog {

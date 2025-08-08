@@ -20,6 +20,7 @@ interface Blog {
   imageAlt: string;
   title: string;
   description: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: any;
   authorName: string;
   authorAvatarSrc?: string;

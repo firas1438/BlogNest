@@ -49,7 +49,7 @@ export const mdxComponents = {
     className,
     ...props
   }: React.HTMLAttributes<HTMLElement>) => (
-    // @ts-ignore
+    // @ts-expect-error
     <TypographyInlineCode {...props} className={cn(className)} />
   ),
 

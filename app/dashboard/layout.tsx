@@ -2,8 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, ReactNode, useState } from "react";
-import Image from "next/image";
+import { useEffect, ReactNode } from "react";
 import Sidebar from "@/components/dashboard-sidebar";
 import { Logo } from "@/components/logo";
 

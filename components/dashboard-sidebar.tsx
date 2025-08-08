@@ -2,7 +2,7 @@ import { Home,ShoppingCart,User,AlarmClockPlus,BookOpen,LogOut, User2} from "luc
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { signOut } from "next-auth/react";
 import { AlertDialog,AlertDialogTrigger,AlertDialogContent,AlertDialogHeader,AlertDialogFooter,AlertDialogTitle,AlertDialogDescription,AlertDialogCancel,AlertDialogAction,} from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
