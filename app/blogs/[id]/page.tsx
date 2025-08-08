@@ -8,19 +8,16 @@ import { Separator } from '@/components/ui/separator';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { mdxComponents } from "@/components/ui/typography"
+import { mdxComponents } from "@/components/ui/typography";
 import { AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-
 interface Blog {
   _id: string;
   imageSrc: string;
-  imageAlt: string;
   title: string;
   description: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: any;
   authorName: string;
   authorAvatarSrc?: string;
@@ -30,17 +27,27 @@ interface Blog {
   createdAt: string;
 }
 
+// API calls
 const fetchBlogById = async (id: string): Promise<Blog> => {
   const res = await fetch(`/api/blogs/${id}`);
   if (!res.ok) throw new Error('Failed to fetch blog');
-  return res.json();
+  const blog = await res.json();
+
+  // Send PATCH request to increment views in DB
+  fetch(`/api/blogs/${id}`, { method: 'PATCH' }).catch((err) =>
+    console.error('Failed to increment views', err)
+  );
+
+  return blog;
 };
 
 export default function BlogDetailPage() {
   const { id } = useParams() as { id: string };
+
+  // Fetch blog data 
   const { data: blog, isLoading, isError } = useQuery<Blog, Error>({ queryKey: ['blog', id], queryFn: () => fetchBlogById(id), enabled: !!id, });
 
-  {/* loading skeleton */}
+  // Loading skeleton
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-24">
@@ -61,7 +68,7 @@ export default function BlogDetailPage() {
     );
   }
 
-  {/* error message */}
+  // Error message
   if (isError || !blog) {
     return (
       <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col items-center justify-center">
@@ -98,7 +105,7 @@ export default function BlogDetailPage() {
         </div>
 
         {/* right column - additional info */}
-        <div className="space-y-5 ">
+        <div className="space-y-5">
 
           {/* article details */}
           <div className="bg-muted/50 p-6 rounded-2xl">
@@ -107,13 +114,9 @@ export default function BlogDetailPage() {
             {/* publisher */}
             <div className="flex items-center gap-4 mb-5">
               <Avatar className="h-12 w-12">
-                {blog.authorAvatarSrc ? (
-                  <AvatarImage src={blog.authorAvatarSrc} />
-                ) : (
                   <AvatarFallback>
                     {blog.authorName.charAt(0).toUpperCase()}
                   </AvatarFallback>
-                )}
               </Avatar>
               <div>
                 <p className="font-medium">{blog.authorName}</p>
@@ -136,6 +139,7 @@ export default function BlogDetailPage() {
                 <span>{blog.views.toLocaleString()}</span>
               </div>
             </div>
+            
           </div>
 
           {/* description */}
@@ -151,9 +155,7 @@ export default function BlogDetailPage() {
             <h2 className="text-xl font-semibold mb-4">Tags</h2>
             <div className="flex flex-wrap gap-2">
               {blog.tags.map((tag: string, i: number) => (
-                <span key={i} className="bg-muted px-3 py-1.5 text-sm rounded-full">
-                  {tag}
-                </span>
+                <span key={i} className="bg-muted px-3 py-1.5 text-sm rounded-full"> {tag} </span>
               ))}
             </div>
           </div>

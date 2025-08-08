@@ -8,7 +8,7 @@ export default function HeroPage() {
       {/* bottom right */}
       <AnimatedGridPattern numSquares={50} maxOpacity={0.1} duration={3} className={cn( "[mask-image:radial-gradient(450px_circle_at_right,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 inset-y-[-0%] h-[100%] skew-y-12" )} />
       {/* top left */}
-      <AnimatedGridPattern numSquares={50} maxOpacity={0.1} duration={3} className={cn( "[mask-image:radial-gradient(450px_circle_at_top_left,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 inset-y-[20%] h-[200%] skew-y-12")}/>
+      <AnimatedGridPattern numSquares={50} maxOpacity={0.1} duration={3} className={cn( "[mask-image:radial-gradient(450px_circle_at_top_left,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 lg:inset-y-[20%] inset-y-[-50%] h-[200%] skew-y-12")}/>
       <header className="mx-auto max-w-3xl space-y-4 text-center">
         <h1 className="text-3xl font-semibold lg:text-5xl lg:leading-14">
           Welcome to BlogNest

@@ -45,7 +45,7 @@ export default function RecentPostsPage() {
 
         {/* Loading State */}
         {isLoading && (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2  lg:grid-cols-3">
             {Array.from({ length: 3 }).map((_, index) => (
               <div key={index} className="bg-card text-card-foreground overflow-hidden rounded-lg border">
                 <Skeleton className="h-48 w-full" />
@@ -84,7 +84,6 @@ export default function RecentPostsPage() {
                   title={blog.title}
                   description={blog.description}
                   authorName={blog.authorName}
-                  authorAvatarSrc={blog.authorAvatarSrc || '/placeholder.svg'}
                   readTime={blog.readTime}
                   tags={blog.tags}
                   views={blog.views}

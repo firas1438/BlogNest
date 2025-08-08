@@ -8,7 +8,6 @@ interface BlogPostCardProps {
   title: string;
   description: string;
   authorName: string;
-  authorAvatarSrc: string;
   readTime: string;
   tags: string[];
   views: number;
@@ -20,7 +19,6 @@ export function BlogPostCard({
   title,
   description,
   authorName,
-  authorAvatarSrc,
   readTime,
   tags,
   views
@@ -50,7 +48,6 @@ export function BlogPostCard({
         {/* Author Info */}
         <div className="text-muted-foreground flex items-center gap-2 text-sm">
           <Avatar className="h-6 w-6">
-            <AvatarImage src={authorAvatarSrc || "/placeholder.svg"} />
             <AvatarFallback>
               {authorName.split(" ").map((n) => n[0]).join("")}
             </AvatarFallback>

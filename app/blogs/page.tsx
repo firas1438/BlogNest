@@ -125,7 +125,7 @@ export default function BlogPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {currentBlogs.map(blog => (
               <Link key={blog._id} href={`/blogs/${blog._id}`}>
-                <BlogPostCard imageSrc={blog.imageSrc} imageAlt="Blog Banner" title={blog.title} description={blog.description} authorName={blog.authorName} authorAvatarSrc='/placeholder.svg' readTime={blog.readTime} tags={blog.tags} views={blog.views} />
+                <BlogPostCard imageSrc={blog.imageSrc} imageAlt="Blog Banner" title={blog.title} description={blog.description} authorName={blog.authorName}  readTime={blog.readTime} tags={blog.tags} views={blog.views} />
               </Link>
             ))}
           </div>

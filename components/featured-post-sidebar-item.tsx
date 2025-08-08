@@ -12,7 +12,7 @@ export function FeaturedPostSidebarItem({
 }: FeaturedPostSidebarItemProps) {
   return (
     <div className="flex items-center gap-4">
-      <img src={imageSrc || "/placeholder.svg"} alt={imageAlt} width={64} height={64} className="aspect-square rounded-md object-cover"/>
+      <img src={imageSrc} alt={imageAlt} width={64} height={64} className="aspect-square rounded-md object-cover"/>
       <h4 className="text-sm leading-snug font-medium">{title}</h4>
     </div>
   );
