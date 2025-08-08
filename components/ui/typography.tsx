@@ -1,14 +1,4 @@
-import {
-  TypographyH1,
-  TypographyH2,
-  TypographyH3,
-  TypographyH4,
-  TypographyP,
-  TypographyBlockquote,
-  TypographyInlineCode,
-  TypographyList,
-  TypographyTable,
-} from "@/components/ui/typography-elements"
+import { TypographyH1 ,TypographyH2, TypographyH3, TypographyH4, TypographyP, TypographyBlockquote, TypographyInlineCode, TypographyList, TypographyTable } from "@/components/ui/typography-elements"
 import { Separator } from "./separator"
 import { cn } from "@/lib/utils"
 
@@ -54,10 +44,12 @@ export const mdxComponents = {
     <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />
   ),
 
+  
   code: ({
     className,
     ...props
   }: React.HTMLAttributes<HTMLElement>) => (
+    // @ts-ignore
     <TypographyInlineCode {...props} className={cn(className)} />
   ),
 

@@ -59,7 +59,7 @@ export function BlogPostCard({
           </Avatar>
           <span>{authorName}</span>
           <span>❖</span>
-          <span>{readTime} read</span>
+          <span>{readTime} min read</span>
           <span>❖</span>
           <span className="flex items-center gap-1.5"> {views} views </span> 
 

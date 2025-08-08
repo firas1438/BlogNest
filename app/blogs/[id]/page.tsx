@@ -82,12 +82,12 @@ export default function BlogDetailPage() {
 
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 lg:px-24">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-4">
 
         {/* left column - blog content */}
         <div className="lg:col-span-2">
           <img src={blog.imageSrc} alt="Blog Image" className="w-full h-auto max-h-[400px] object-cover rounded-2xl mb-8"/>
-          <h1 className="text-2xl font-bold mb-4">{blog.title}</h1>
+          <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
           <Separator/>
           <div className="prose max-w-none mt-6">
             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={mdxComponents}>
@@ -97,7 +97,7 @@ export default function BlogDetailPage() {
         </div>
 
         {/* right column - additional info */}
-        <div className="space-y-5">
+        <div className="space-y-5 ">
 
           {/* article details */}
           <div className="bg-muted/50 p-6 rounded-2xl">

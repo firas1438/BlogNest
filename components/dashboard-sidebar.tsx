@@ -1,13 +1,22 @@
-import { Home,ShoppingCart,User,AlarmClockPlus,BookOpen,LogOut} from "lucide-react";
+import { Home,ShoppingCart,User,AlarmClockPlus,BookOpen,LogOut, User2} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { signOut } from "next-auth/react";
 import { AlertDialog,AlertDialogTrigger,AlertDialogContent,AlertDialogHeader,AlertDialogFooter,AlertDialogTitle,AlertDialogDescription,AlertDialogCancel,AlertDialogAction,} from "@/components/ui/alert-dialog";
+import { useSession } from "next-auth/react";
+
+
 
 export default function Sidebar() {
+  // logout
   const handleLogout = () => signOut({ callbackUrl: "/" });
+
+  // fetch user data
+  const { data: session } = useSession();
+  const username = session?.user?.name ?? "User";
+  const email = session?.user?.email ?? "Email"
 
   return (
     <aside className="hidden border-r md:block">
@@ -16,15 +25,14 @@ export default function Sidebar() {
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6 py-10">
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10">
-              <AvatarImage src="/avatar.png" alt="John Doe" />
-              <AvatarFallback>FB</AvatarFallback>
+              <AvatarFallback><User2 className="w-5 h-5"/></AvatarFallback>
             </Avatar>
             <div className="flex flex-col leading-tight">
               <span className="text-sm font-medium text-muted-foreground">
-                Firas Benali
+                {username}
               </span>
               <span className="text-xs text-muted-foreground max-w-[130px] lg:max-w-[180px] truncate">
-                benalifiras1438@gmail.com
+                {email}
               </span>
             </div>
           </div>
@@ -33,12 +41,12 @@ export default function Sidebar() {
         {/* sidebar elements */}
         <div className="flex-1 py-2">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4 space-y-1">
-            <Link href="#" className="flex items-center gap-3 rounded-lg px-3 py-3 text-muted-foreground transition-all hover:text-primary">
+            <Link href="/dashboard" className="flex items-center gap-3 rounded-lg px-3 py-3 text-muted-foreground transition-all hover:text-primary">
               <Home className="h-4 w-4" />
               Dashboard
             </Link>
 
-            <Link href="#" className="flex items-center gap-3 rounded-lg px-3 py-3 text-muted-foreground transition-all hover:text-primary">
+            <Link href="/dashboard/manage" className="flex items-center gap-3 rounded-lg px-3 py-3 text-muted-foreground transition-all hover:text-primary">
               <ShoppingCart className="h-4 w-4" />
               Manage Blogs
             </Link>

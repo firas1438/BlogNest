@@ -5,7 +5,7 @@ export interface BlogDocument {
   title: string;
   description: string;
   authorName: string;
-  readTime: string;
+  readTime: number;
   tags: string[];
   views: number;
   content: any;
@@ -17,7 +17,7 @@ const BlogSchema = new Schema<BlogDocument>(
     title: { type: String, required: true },
     description: { type: String, required: true },
     authorName: { type: String, default: "Firas Benali" },
-    readTime: { type: String, required: true },
+    readTime: { type: Number, required: true },
     tags: { type: [String], required: true },
     views: { type: Number, default: 0 },
     content: { type: Schema.Types.Mixed, required: true }, 

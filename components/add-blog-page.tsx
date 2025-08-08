@@ -16,7 +16,7 @@ export default function AddBlogPage() {
     description: '',
     imageSrc: '',
     authorName: '',
-    readTime: '',
+    readTime: 0,
     tags: [],
     content: '',
   });
@@ -85,9 +85,8 @@ export default function AddBlogPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:px-6 lg:px-18 min-h-screen flex flex-col">
-      <h1 className="text-2xl font-bold mb-6">Create a New Blog</h1>
-
+    <div>
+      <h1 className="text-3xl font-bold mb-6">Create a New Blog</h1>
       <div className="grid gap-6">
         {/* Blog Info Inputs */}
         <div className="grid gap-4">

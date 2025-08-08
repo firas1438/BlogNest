@@ -93,7 +93,7 @@ export default function FeaturedPage() {
             </div>
           )}
           {/* title */}
-          <h2 className="text-2xl leading-tight font-bold md:text-3xl mb-2 ">
+          <h2 className=" leading-tight font-bold text-xl mb-2 ">
             {mostViewed.title}
           </h2>
           {/* description */}

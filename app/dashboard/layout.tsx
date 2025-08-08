@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, ReactNode, useState } from "react";
 import Image from "next/image";
 import Sidebar from "@/components/dashboard-sidebar";
+import { Logo } from "@/components/logo";
 
 type DashboardLayoutProps = {
   children: ReactNode;
@@ -24,9 +25,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   // loading screen
   if (status !== "authenticated") {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center">
+      <main className="flex min-h-[80vh] flex-col items-center justify-center">
         <div className="animate-pulse">
-          <p>Loading...</p>
+          <Logo/>
         </div>
       </main>
     );
@@ -37,7 +38,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <Sidebar />
       <div className="flex flex-col flex-1 overflow-auto">
         {/* page content */}
-        <main className="p-5">
+        <main>
           {children}
         </main>
       </div>

@@ -32,7 +32,7 @@ export function SiteHeader() {
 
             {/* Github */}
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/shadcn-examples" target="_blank">
+              <Link href="https://github.com/firas1438/BlogNest" target="_blank">
                 <GithubIcon />
               </Link>
             </Button>
