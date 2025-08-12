@@ -1,6 +1,7 @@
 ## BlogNest
+This project is a modern blog platform for sharing articles, tutorials, and insights on web development, design, AI, DevOps, and more.
 
-**BlogNest** is a modern blog platform for sharing articles, tutorials, and insights on web development, design, AI, DevOps, and more.
+![App Preview](https://i.imgur.com/ups3dDI.jpeg)
 
 ## Usage
 Users can explore all posts via the `/blogs` page or dive into individual articles at `/blogs/:id`, rendered with rich Markdown content. Authenticated users can access the `/dashboard` to create new blog posts, easily uploading Markdown files for quick content creation.
@@ -28,7 +29,7 @@ Access the live application [here](https://theblognest.vercel.app).
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/firas1438/Blognest.git
-   cd blognest
+   cd Blognest
    ```
 
 2. **Install Dependencies**:
