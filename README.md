@@ -1,7 +1,7 @@
 ## BlogNest
 This project is a modern blog platform for sharing articles, tutorials, and insights on web development, design, AI, DevOps, and more.
 
-![App Preview](https://i.imgur.com/ups3dDI.jpeg)
+![App Preview](https://i.postimg.cc/RhpVfdQ2/posterurl.png)
 
 ## Usage
 Users can explore all posts via the `/blogs` page or dive into individual articles at `/blogs/:id`, rendered with rich Markdown content. Authenticated users can access the `/dashboard` to create new blog posts, easily uploading Markdown files for quick content creation.
