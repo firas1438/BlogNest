@@ -28,8 +28,8 @@ Access the live application [here](https://theblognest.vercel.app).
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/firas1438/Blognest.git
-   cd Blognest
+   git clone https://github.com/firas1438/BlogNest.git
+   cd BlogNest
    ```
 
 2. **Install Dependencies**:
