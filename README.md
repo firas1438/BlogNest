@@ -11,18 +11,19 @@ Access the live application [here](https://theblognest.vercel.app).
 
 ## Tech Stack
 
-| Technology         | Description                                    |
-|--------------------|------------------------------------------------|
-| Next.js            | React framework for server-side rendering and API routes |
+| Technology         | Description                                   |
+|--------------------|-----------------------------------------------|
+| Next.js            | React framework for SSR and API routes        |
 | Tailwind CSS       | Responsive styling                            |
 | Spline 3D          | Interactive 3D animation                      |
 | Lucide React       | Icon library                                  |
 | NextAuth.js        | Secure user authentication                    |
-| Mongoose/MongoDB   | Database for blog posts and metadata          |
+| Mongoose           | Object-Document Mapping                       |
+| MongoDB            | Database for blog posts                       |
 | Tanstack Query     | Efficient data fetching and caching           |
 | React Markdown     | Markdown rendering for blog content           |
 | shadcn/ui          | UI library                                    |
-| Zod                | Schema validation for forms and APIs          |
+| Zod                | Schema validation                             |
 
 ## Installation
 
