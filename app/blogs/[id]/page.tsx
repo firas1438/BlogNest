@@ -12,6 +12,8 @@ import { mdxComponents } from "@/components/ui/typography";
 import { AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { BackButton } from '@/components/back-button';
+import RecentPostsPage from '@/components/recentposts-section';
 
 interface Blog {
   _id: string;
@@ -51,7 +53,10 @@ export default function BlogDetailPage() {
   // Loading skeleton
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-24">
+      <div className="container mx-auto px-8 py-6 lg:py-6 md:px-6 lg:px-24">
+        <div>
+          <Skeleton className="h-8 w-24 mb-5 rounded-lg" />
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
             <Skeleton className="h-96 w-full" />
@@ -90,9 +95,11 @@ export default function BlogDetailPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 md:px-6 lg:px-24">
+    <div className="container mx-auto px-8 py-6 lg:py-6 md:px-6 lg:px-24">
+      {/* back button */}
+      <BackButton />
+      {/* blog content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-4">
-
         {/* left column - blog content */}
         <div className="lg:col-span-2">
           <img src={blog.imageSrc} alt="Blog Image" className="w-full h-auto max-h-[400px] object-cover rounded-2xl mb-8"/>
@@ -163,6 +170,11 @@ export default function BlogDetailPage() {
 
         </div>
 
+      </div>
+      <Separator className='my-8'/>
+      {/* recent posts */}
+      <div className="mb-12">
+        <RecentPostsPage/>
       </div>
     </div>
   );

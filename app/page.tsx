@@ -4,7 +4,7 @@ import InfoPage from "@/components/info-page";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="px-4">
       <HeroPage/>
       <InfoPage/>
     </div>

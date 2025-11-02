@@ -15,15 +15,15 @@ Access the live application [here](https://theblognest.vercel.app).
 |--------------------|-----------------------------------------------|
 | Next.js            | React framework for SSR and API routes        |
 | Tailwind CSS       | Responsive styling                            |
+| shadcn/ui          | UI library                                    |
 | Spline 3D          | Interactive 3D animation                      |
-| Lucide React       | Icon library                                  |
 | NextAuth.js        | Secure user authentication                    |
 | Mongoose           | Object-Document Mapping                       |
 | MongoDB            | Database for blog posts                       |
+| Zod                | Schema validation                             |
 | Tanstack Query     | Efficient data fetching and caching           |
 | React Markdown     | Markdown rendering for blog content           |
-| shadcn/ui          | UI library                                    |
-| Zod                | Schema validation                             |
+
 
 ## Installation
 

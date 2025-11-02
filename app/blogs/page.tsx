@@ -28,24 +28,6 @@ const fetchBlogs = async (): Promise<Blog[]> => {
   return res.json();
 };
 
-// skeleton
-function BlogCardSkeleton() {
-  return (
-    <div className="bg-card text-card-foreground overflow-hidden rounded-lg border">
-      <div className="relative h-48 w-full"><Skeleton className="h-full w-full" /></div>
-      <div className="grid gap-2 p-4">
-        <Skeleton className="h-6 w-3/4" />
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-5/6" />
-        <div className="flex items-center gap-2">
-          <Skeleton className="h-6 w-6 rounded-full" />
-          <Skeleton className="h-4 w-24" />
-          <Skeleton className="h-4 w-10" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function BlogPage() {
   const { data: blogs, isLoading, isError } = useQuery({ queryKey: ['blogs'], queryFn: fetchBlogs });
@@ -67,12 +49,12 @@ export default function BlogPage() {
   const clearFilters = () => { setSearchTerm(''); setSelectedTags([]); };
 
   return (
-    <div className="container mx-auto px-4 py-10 md:px-6 lg:px-24 min-h-screen">
+    <div className="container mx-auto px-8 py-10 md:px-6 lg:px-24 min-h-screen">
       <div className="mb-8">
 
         {/* searchbox */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-          <h1 className="text-3xl font-bold">Latest Blogs</h1>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-6">
+          <h1 className="text-3xl ml-1 font-bold">Latest Blogs</h1>
           <div className="relative w-full md:w-64">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input placeholder="Search blogs..." className="pl-9" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -83,6 +65,7 @@ export default function BlogPage() {
             )}
           </div>
         </div>
+        
         {/* tags */}
         <div className="mb-6">
           <div className="flex flex-wrap gap-2">
@@ -129,6 +112,7 @@ export default function BlogPage() {
               </Link>
             ))}
           </div>
+          
           {/* pagination */}
           {totalPages > 1 && (
             <div className="mt-12 flex justify-center gap-2">
@@ -141,6 +125,30 @@ export default function BlogPage() {
           )}
         </>
       )}
+    </div>
+  );
+}
+
+
+
+
+
+
+// skeleton
+function BlogCardSkeleton() {
+  return (
+    <div className="bg-card text-card-foreground overflow-hidden rounded-lg border">
+      <div className="relative h-48 w-full"><Skeleton className="h-full w-full" /></div>
+      <div className="grid gap-2 p-4">
+        <Skeleton className="h-6 w-3/4" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-5/6" />
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-6 w-6 rounded-full" />
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-4 w-10" />
+        </div>
+      </div>
     </div>
   );
 }

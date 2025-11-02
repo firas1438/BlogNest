@@ -6,9 +6,10 @@ import Link from "next/link";
 
 export default function CTABanner() {
   return (
-      <div className="dark:border relative overflow-hidden my-6 w-full dark bg-background text-foreground  mx-auto rounded-2xl py-10 md:py-16 px-6 md:px-14">
-        <AnimatedGridPattern numSquares={50} maxOpacity={0.1} duration={3} className={cn( "[mask-image:radial-gradient(400px_circle_at_right,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12" )}/>
-        <AnimatedGridPattern numSquares={50} maxOpacity={0.1} duration={3} className={cn( "[mask-image:radial-gradient(400px_circle_at_top_left,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 inset-y-0 h-[200%] skew-y-12" )}/>
+      <div className="relative overflow-hidden w-full mx-auto rounded-2xl my-6 mt-20 lg:my-4 md:my-10 py-14 md:py-16 px-10 md:px-14 bg-background dark:bg-background-dark text-foreground dark:text-foreground-dark border " >
+        {/* background */}
+        <AnimatedGridPattern numSquares={30} maxOpacity={0.8} duration={3} className={cn( "[mask-image:radial-gradient(400px_circle_at_right,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 absolute opacity-15 lg:opacity-40 " )} />
+        <AnimatedGridPattern numSquares={30} maxOpacity={0.8} duration={3} className={cn( "[mask-image:radial-gradient(400px_circle_at_top_left,white,rgba(255,255,255,0.6),transparent)]", "inset-x-0 inset-y-0 h-[200%] skew-y-12 absolute opacity-15 lg:opacity-40" )} />
         <div className="relative z-0 flex flex-col gap-3">
           <h3 className="text-2xl lg:text-3xl font-semibold">
             Dive Deeper into Developer Insights
@@ -20,11 +21,10 @@ export default function CTABanner() {
         </div>
         <div className="relative z-0 mt-8 flex flex-col sm:flex-row gap-4">
           <Link href="/blogs">
-            <Button size="lg">
+            <Button size="lg" className="cursor-pointer">
               Start Reading <ArrowUpRight className="!h-5 !w-5" />
             </Button>
           </Link>
-
         </div>
       </div>
   );
